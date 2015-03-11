@@ -9,11 +9,10 @@ V_abs = [omega_ab_s_hat*p_ab + p_ab_dot;omega_ab_s]
 
 % Part A done
 
-R = expm( omega_ab_s_hat * t)
-R_T = transpose(R)
-omega_ab_b = R_T * omega_ab_s
-V_ab_b = [R_T * p_ab_dot ;omega_ab_b]
+R = vpa(simplify(expm( omega_ab_s_hat * t)), 4)
+omega_ab_b = R' * omega_ab_s
+V_ab_b = [R' * p_ab_dot ;omega_ab_b]
 
 % Part B done
-R_ab_1 = subs(R, t, 1)
+R_ab_1 = vpa(subs(R, t, 1),2)
 p_ab_1 = subs(p_ab, t, 1)
